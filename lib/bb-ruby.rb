@@ -253,9 +253,9 @@ module BBRuby
       # parse spacing
       text.gsub!( /\r\n?/, "\n" )
       text.gsub!( /\n/, "<br />\n" )
-			text.gsub!(/\[quote\]/, '<fieldset><legend>Quote:</legend><blockquote>')
-			text.gsub!(/\[quote(:.*)?="?(.*?)"?\]/, '<fieldset><legend>Quote: \2</legend><blockquote>')
-			text.gsub!(/\[\/quote\]/, '</blockquote></fieldset>')
+      text.gsub!(/\[quote\]/, '<div class="quote"><div>')
+      text.gsub!(/\[quote(:.*)?=(?:&quot;)?(.*?)(?:&quot;)?(\s+date=(\d+))?\]/, "<div class=\"quote\"><div class=\"clearfix\"><div class=\"quote-title\">Цитата</div><div class=\"quote-cite\"><span class=\"quote-author\">\\2</span><span class=\"datestamp\">\\4</span></div></div><div>")
+      text.gsub!(/\[\/quote\]/, '</div></div>')
 
       # return markup
       text
